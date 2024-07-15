@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package sso;
+
+option go_package = "sso/";
+
+service Auth {
+    rpc Register(RegisterUserRequest) returns (RegisterUserResponse);
+    rpc Login(LoginUserRequest) returns (LoginuserResponse);
+}
+
+message RegisterUserRequest {
+    string login = 1;
+    string password = 2;
+    string email = 3;
+}
+
+message RegisterUserResponse {
+    int64 user_id = 1;
+}
+
+message LoginUserRequest {
+    string login = 1;
+    string password = 2;
+}
+
+message LoginuserResponse {
+    string token = 1;
+}
